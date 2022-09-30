@@ -3,7 +3,11 @@
 export default function Title() {
   return (
     <header>
-      <h1 className="text-5xl text-center">To Do List</h1>
+      <p className="text-5xl text-center">To Do List</p>
+      <br></br>
+      <p className="text-xl text-center">
+        This is a To Do list created using React by Kevin Chan.
+      </p>
     </header>
   )
 }

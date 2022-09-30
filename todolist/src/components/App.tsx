@@ -4,7 +4,7 @@ import ToDoList from './ToDoList'
 
 function App() {
   return (
-    <div className="bg-white">
+    <div className="bg-white space-y-10">
       <Title />
       <ListActions />
       <ToDoList />
