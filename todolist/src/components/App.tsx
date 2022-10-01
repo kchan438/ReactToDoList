@@ -1,15 +1,13 @@
-import Title from './Title'
-import ListActions from './ListActions'
-import ToDoList from './ToDoList'
+import Title from './Title';
+import ToDoList from './ToDoList';
 
 function App() {
   return (
-    <div className="bg-white space-y-10">
+    <div className="bg-white">
       <Title />
-      <ListActions />
       <ToDoList />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

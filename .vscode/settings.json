@@ -2,6 +2,6 @@
   "editor.formatOnSave": true,
   "javascript.format.semicolons": "insert",
   "typescript.format.semicolons": "insert",
-  "prettier.semi": true,
-  "editor.acceptSuggestionOnCommitCharacter": true
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "files.eol": "\r\n"
 }
