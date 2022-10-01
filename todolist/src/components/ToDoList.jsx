@@ -4,7 +4,7 @@ import ListItem from './ListItem';
 export default function ToDoList() {
   var [listArray, setArray] = useState(['test1', 'test2', 'test3']);
   const [isEmpty, setIsEmpty] = useState(true);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(listArray.length);
 
   //append item to end of array
   const appendItem = () => {
@@ -24,7 +24,6 @@ export default function ToDoList() {
   useEffect(() => {
     if (listArray.length > 0) {
       setIsEmpty(false);
-      console.log(listArray);
     }
   }, [listArray]),
     [isEmpty, count];
@@ -48,8 +47,13 @@ export default function ToDoList() {
         </div>
         <br></br>
         {listArray.map((item) => {
-          console.log();
-          return <ListItem key={Math.random() * 1} text={item} />;
+          return (
+            <ListItem
+              key={Math.random() * 1}
+              id={listArray.indexOf(item).toString()}
+              text={item}
+            />
+          );
         })}
       </div>
     );
