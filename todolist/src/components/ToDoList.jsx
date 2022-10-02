@@ -28,23 +28,23 @@ export default function ToDoList() {
   };
 
   //delete task based on index(item)
-  // const deleteTask = (item) => {
-  //   console.log('Delete Clicked for index: ' + item);
-  //   // console.log(item);
-  //   delete listArray[item];
-  //   // setArray(listArray.splice(item));
-  //   console.log('before setCount: ' + count);
-  //   setCount((previousCount) => {
-  //     console.log('previousCount: ' + previousCount);
-  //     if (previousCount > 0) {
-  //       previousCount - 1;
-  //     } else {
-  //       setCount(listArray.length);
-  //     }
-  //   });
-  //   console.log('listarray: ' + listArray);
-  //   // console.log('after setCount: ' + count);
-  // };
+  const deleteTask = (item) => {
+    console.log('Delete Clicked for index: ' + item);
+    // console.log(item);
+    delete listArray[item];
+    // setArray(listArray.splice(item));
+    console.log('before setCount: ' + count);
+    setCount((previousCount) => {
+      console.log('previousCount: ' + previousCount);
+      if (previousCount > 0) {
+        previousCount - 1;
+      } else {
+        setCount(listArray.length);
+      }
+    });
+    // console.log('listarray: ' + listArray);
+    // console.log('after setCount: ' + count);
+  };
 
   useEffect(() => {
     if (listArray.length > 0) {
@@ -52,8 +52,9 @@ export default function ToDoList() {
       // console.log('useEffect: ' + count);
     } else {
       setIsEmpty(true);
+      setCount(0);
     }
-  }, [listArray, isEmpty]);
+  }, [listArray, isEmpty, setCount]);
 
   if (!isEmpty || isEmpty) {
     console.log(listArray);
@@ -83,9 +84,9 @@ export default function ToDoList() {
                   text={item}
                   // array={listArray}
                   // setArrayState={setArray}
-                  // deleteTask={() => {
-                  //   deleteTask(listArray.indexOf(item));
-                  // }}
+                  deleteTask={() => {
+                    deleteTask(listArray.indexOf(item));
+                  }}
                 />
               );
             })}
