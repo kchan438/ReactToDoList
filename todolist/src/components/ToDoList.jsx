@@ -9,10 +9,14 @@ export default function ToDoList() {
   //append item to end of array
   const appendItem = () => {
     const getText = window.prompt('Enter your task:');
-    setArray((current) => [...current, getText]);
-    setCount((previousCount) => {
-      previousCount + 1;
-    });
+    if (getText === '') {
+      return;
+    } else {
+      setArray((current) => [...current, getText]);
+      setCount((previousCount) => {
+        previousCount + 1;
+      });
+    }
   };
 
   //clear the to do list
@@ -21,11 +25,31 @@ export default function ToDoList() {
     setCount(0);
   };
 
+  //delete task based on index(item)
+  const deleteTask = (item) => {
+    console.log('Delete Clicked for index: ' + item);
+    // console.log(item);
+    delete listArray[item];
+    // setArray(listArray.splice(item));
+    console.log('before setCount: ' + count);
+    setCount((previousCount) => {
+      console.log('previousCount: ' + previousCount);
+      if (previousCount > 0) {
+        previousCount - 1;
+      } else {
+        setCount(listArray.length);
+      }
+    });
+    console.log('listarray: ' + listArray);
+    console.log('after setCount: ' + count);
+  };
+
   useEffect(() => {
+    console.log('useEffect: ' + count);
     if (listArray.length > 0) {
       setIsEmpty(false);
     }
-  }, [listArray]),
+  }, [listArray, setArray]),
     [isEmpty, count];
 
   if (!isEmpty) {
@@ -47,11 +71,17 @@ export default function ToDoList() {
         </div>
         <br></br>
         {listArray.map((item) => {
+          // console.log(listArray.indexOf(item));
           return (
             <ListItem
               key={Math.random() * 1}
               id={listArray.indexOf(item).toString()}
               text={item}
+              // array={listArray}
+              // setArrayState={setArray}
+              deleteTask={() => {
+                deleteTask(listArray.indexOf(item));
+              }}
             />
           );
         })}
