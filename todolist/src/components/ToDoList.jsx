@@ -31,11 +31,13 @@ export default function ToDoList() {
   const deleteTask = (item) => {
     console.log('Delete Clicked for index: ' + item);
     // console.log(item);
-    delete listArray[item];
-    // setArray(listArray.splice(item));
-    console.log('before setCount: ' + count);
+    // delete listArray[item];
+    const firstHalf = listArray.slice(0, item);
+    const secondHalf = listArray.slice(item + 1, listArray.length);
+    setArray(firstHalf.concat(secondHalf));
+    // console.log('before setCount: ' + count);
     setCount((previousCount) => {
-      console.log('previousCount: ' + previousCount);
+      // console.log('previousCount: ' + previousCount);
       if (previousCount > 0) {
         previousCount - 1;
       } else {
