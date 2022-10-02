@@ -4,10 +4,10 @@ type ListItemProps = {
   text: string;
   id: string;
   // listArray: [];
-  deleteTask: React.MouseEventHandler<HTMLButtonElement>;
+  // deleteTask: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export default function ListItem({ text, deleteTask, id }: ListItemProps) {
+export default function ListItem({ text, id }: ListItemProps) {
   const [checked, setChecked] = useState(false);
   // const [isDeleted, setDeleted] = useState(false);
 
@@ -22,7 +22,7 @@ export default function ListItem({ text, deleteTask, id }: ListItemProps) {
 
   //function executes onChange of the input
   function check(event: { target: { checked: boolean } }) {
-    console.log(event.target.checked);
+    // console.log(event.target.checked);
     setChecked(event.target.checked);
   }
 
@@ -44,12 +44,12 @@ export default function ListItem({ text, deleteTask, id }: ListItemProps) {
     <div className="flex place-content-center space-x-4 py-1">
       <input type="checkbox" onChange={check} />
       <div className={strike()}>{text}</div>
-      <button
+      {/* <button
         className="rounded border border-gray-500 px-2"
-        onClick={deleteTask}
+        // onClick={deleteTask}
       >
         Delete
-      </button>
+      </button> */}
     </div>
   );
 }
